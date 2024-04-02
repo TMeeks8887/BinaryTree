@@ -48,31 +48,85 @@ public class BST {
      */
     public boolean search(int val) {
         // TODO: Complete the search function
+        return search(root, target);
         return false;
     }
 
+    public boolean search(BSTNode n, int target)
+    {
+        if (n == null)
+        {
+            return false;
+        }
+        if (target == n.getVal())
+        {
+            return true;
+        }
+        if (target > n.getVal())
+        {
+            return search(n.getRight(), target);
+        }
+        return search(n.getLeft(), target);
+    }
     /**
      * @return ArrayList of BSTNodes in inorder
      */
-    public ArrayList<BSTNode> getInorder() {
+
+    public ArrayList<BSTNode> getInorder()
+    {
+        ArrayList<BSTNode> list = new ArrayList<BSTNode>();
+        getInorder(list, root);
+        return list;
+    }
+    public void getInorder(ArrayList<BSTNode> list, BSTNode n) {
         // TODO: Complete inorder traversal
-        return null;
+        if(n == null)
+        {
+            return;
+        }
+        getInorder(list, n.getLeft());
+        list.add(n);
+        getInorder(list, n.getRight());
     }
 
     /**
      * @return ArrayList of BSTNodes in preorder
      */
-    public ArrayList<BSTNode> getPreorder() {
+    public ArrayList<BSTNode> getPreorder()
+    {
+        ArrayList<BSTNode> list = new ArrayList<BSTNode>();
+        getInorder(list, root);
+        return list;
+    }
+    public void getPreorder(ArrayList<BSTNode> list, BSTNode n) {
         // TODO: Complete preorder traversal
-        return null;
+        if(n == null)
+        {
+            return;
+        }
+        list.add(n);
+        getPreorder(list, n.getLeft());
+        getPreorder(list, n.getRight());
     }
 
     /**
      * @return ArrayList of BSTNodes in postorder
      */
-    public ArrayList<BSTNode> getPostorder() {
+    public ArrayList<BSTNode> getPostorder()
+    {
+        ArrayList<BSTNode> list = new ArrayList<BSTNode>();
+        getInorder(list, root);
+        return list;
+    }
+    public void getPostorder(ArrayList<BSTNode> list, BSTNode n) {
         // TODO: Complete postorder traversal
-        return null;
+        if(n == null)
+        {
+            return;
+        }
+        getPostorder(list, n.getLeft());
+        getPostorder(list, n.getRight());
+        list.add(n);
     }
 
     /**

@@ -1,5 +1,5 @@
 import java.util.ArrayList;
-
+// Teddy Meeks
 /**
  * An Integer Binary Search Tree
  * @author: Your Name Here
@@ -46,12 +46,13 @@ public class BST {
      * @param val integer value to search for
      * @return true if val is in the tree, false otherwise
      */
+    // Use Helper
     public boolean search(int val) {
         // TODO: Complete the search function
-        return search(root, target);
-        return false;
+        return search(root, val);
     }
 
+    // Checks for null, then checks each right and left
     public boolean search(BSTNode n, int target)
     {
         if (n == null)
@@ -72,12 +73,14 @@ public class BST {
      * @return ArrayList of BSTNodes in inorder
      */
 
+    // Uses helper
     public ArrayList<BSTNode> getInorder()
     {
         ArrayList<BSTNode> list = new ArrayList<BSTNode>();
         getInorder(list, root);
         return list;
     }
+    // Checks null then recurses down left, gets root, then goes right
     public void getInorder(ArrayList<BSTNode> list, BSTNode n) {
         // TODO: Complete inorder traversal
         if(n == null)
@@ -95,9 +98,10 @@ public class BST {
     public ArrayList<BSTNode> getPreorder()
     {
         ArrayList<BSTNode> list = new ArrayList<BSTNode>();
-        getInorder(list, root);
+        getPreorder(list, root);
         return list;
     }
+    // Checks null then gets root, recurses down left, then goes right
     public void getPreorder(ArrayList<BSTNode> list, BSTNode n) {
         // TODO: Complete preorder traversal
         if(n == null)
@@ -115,9 +119,10 @@ public class BST {
     public ArrayList<BSTNode> getPostorder()
     {
         ArrayList<BSTNode> list = new ArrayList<BSTNode>();
-        getInorder(list, root);
+        getPostorder(list, root);
         return list;
     }
+    // Checks null then recurses down left, then goes right, then gets root
     public void getPostorder(ArrayList<BSTNode> list, BSTNode n) {
         // TODO: Complete postorder traversal
         if(n == null)
@@ -137,6 +142,29 @@ public class BST {
      */
     public void insert(int val) {
         // TODO: Complete insert
+//        ArrayList<BSTNode> list = new ArrayList<BSTNode>();
+//        insert(list, val);
+    }
+
+    public BSTNode insert(BSTNode curr, int val)
+    {
+        // Check null
+        if (curr == null)
+        {
+            curr = new BSTNode(val);
+            return curr;
+        }
+        // Check for left
+        else if (val < curr.getVal())
+        {
+            curr.setLeft(insert(curr.getLeft(), val));
+        }
+        // Check for right
+        else if (val > curr.getVal())
+        {
+            curr.setRight(insert(curr.getRight(), val));
+        }
+        return curr;
     }
 
     /**

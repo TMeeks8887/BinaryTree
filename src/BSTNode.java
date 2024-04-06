@@ -4,7 +4,7 @@
  * @author: Nandhini Namasivayam
  * @version: 03/22/22
  */
-
+// Teddy Meeks
 public class BSTNode {
     private BSTNode left;
     private BSTNode right;
